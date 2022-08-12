@@ -17,13 +17,17 @@ dealerChards = []
 # GUI
 
 window = Tk()
-Icon = PhotoImage(file="icon.png")
+Icon = PhotoImage(file="Icon.png")
 window.geometry("800x600")
 window.resizable(False, False)
 window.iconphoto(True,Icon)
 window.title("Blackjack")
 
 # FUNCTIONS
+
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
+
 
 def givePlayerCard():
     random_card = random.randint(0,len(deck)-1)
@@ -36,7 +40,6 @@ def giveDealerCard():
     dealerChards.append(deck[random_card])
     deck.remove(deck[random_card])
     deck_value.remove(deck_value[random_card])
-
 
 def checkWinner():
     global chips
@@ -56,7 +59,7 @@ def checkWinner():
         print("You lost")
 
 
-os.system("cls")
+cls()
 
 
 
