@@ -40,4 +40,6 @@ os.system("cls")
 givePlayerCard()
 givePlayerCard()
 
+print(playerChards)
+
 window.mainloop()
