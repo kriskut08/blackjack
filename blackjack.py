@@ -14,8 +14,7 @@ dealerChards = []
 # GUI
 
 window = Tk()
-Icon = PhotoImage(file="Icon.png")
-
+Icon = PhotoImage(file="icon.png")
 window.geometry("800x600")
 window.resizable(False, False)
 window.iconphoto(True,Icon)
@@ -34,6 +33,9 @@ def giveDealerCard():
     dealerChards.append(deck[random_card])
     deck.remove(deck[random_card])
     deck_value.remove(deck_value[random_card])
+
+# QKRIS IS A ##########
+# ########## == KEDVES EMBER :) 
 
 os.system("cls")
 
