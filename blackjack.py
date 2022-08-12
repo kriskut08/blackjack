@@ -37,14 +37,28 @@ def giveDealerCard():
     deck.remove(deck[random_card])
     deck_value.remove(deck_value[random_card])
 
-# QKRIS IS A ##########
-# ########## == KEDVES EMBER :) 
+
+def checkWinner():
+    global chips
+    if player_value > 21:
+        chips = chips - bet
+        print("You lost")
+    elif dealer_value > 21:
+        chips = chips + bet
+        print("You won")
+    elif player_value == dealer_value:
+        print("Draw")
+    elif player_value > dealer_value:
+        chips = chips + bet
+        print("You won")
+    else:
+        chips = chips - bet
+        print("You lost")
+
 
 os.system("cls")
 
-givePlayerCard()
-givePlayerCard()
 
-print(playerChards)
+
 
 window.mainloop()
