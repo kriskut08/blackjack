@@ -14,7 +14,7 @@ dealerChards = []
 # GUI
 
 window = Tk()
-Icon = PhotoImage(file="icon.png")
+Icon = PhotoImage(file="Icon.png")
 
 window.geometry("800x600")
 window.resizable(False, False)
