@@ -37,4 +37,7 @@ def giveDealerCard():
 
 os.system("cls")
 
+givePlayerCard()
+givePlayerCard()
+
 window.mainloop()
