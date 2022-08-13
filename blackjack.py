@@ -10,8 +10,8 @@ deck = ["club_2","club_3","club_4","club_5","club_6","club_7","club_8","club_9",
         "spade_2","spade_3","spade_4","spade_5","spade_6","spade_7","spade_8","spade_9","spade_10","spade_J","spade_Q","spade_K","spade_A",
         "diamond_2","diamond_3","diamond_4","diamond_5","diamond_6","diamond_7","diamond_8","diamond_9","diamond_10","diamond_J","diamond_Q","diamond_K","diamond_A",
         "heart_2","heart_3","heart_4","heart_5","heart_6","heart_7","heart_8","heart_9","heart_10","heart_J","heart_Q","heart_K","heart_A"]
-playerChards = []
-dealerChards = []
+playerCards = []
+dealerCards = []
 player_value = 0
 dealer_value = 0
 
@@ -31,19 +31,19 @@ def cls():
 
 def givePlayerCard():
     random_card = random.randint(0,len(deck)-1)
-    playerChards.append(deck[random_card])
+    playerCards.append(deck[random_card])
     deck.remove(deck[random_card])
 
 def giveDealerCard():
     random_card = random.randint(0,len(deck)-1)
-    dealerChards.append(deck[random_card])
+    dealerCards.append(deck[random_card])
     deck.remove(deck[random_card])
 
 def getPlayerValue():
     global player_value
 
     player_value = 0
-    for i in playerChards:
+    for i in playerCards:
         if i[-1] == "A":
             player_value += 11
         elif i[-1] == "J":
@@ -57,7 +57,7 @@ def getPlayerValue():
         else:
             player_value += int(i[-1])
 
-    for i in playerChards:
+    for i in playerCards:
         if i[-1] == "A" and player_value > 21:
             player_value -= 10
 
@@ -65,7 +65,7 @@ def getDealerValue():
     global dealer_value
 
     dealer_value = 0
-    for i in dealerChards:
+    for i in dealerCards:
         if i[-1] == "A":
             dealer_value += 11
         elif i[-1] == "J":
@@ -78,24 +78,35 @@ def getDealerValue():
             dealer_value += 10
         else:
             dealer_value += int(i[-1])
-    for i in dealerChards:
+    for i in dealerCards:
         if i[-1] == "A" and dealer_value > 21:
             dealer_value -= 10
 
 def checkWinner():
     global chips
+    global bet
+    global dealer_value
+    global player_value
 
-    if getPlayerValue() > 21:
-        chips = chips - bet
+    num_of_cards = 0
+    for i in playerCards:
+        num_of_cards += 1
+
+    if player_value > 21:
         print("You lost")
-    elif getDealerValue() > 21:
-        chips = chips + bet
+
+    elif player_value == 21 and num_of_cards == 2:
+        chips = chips + bet*3
         print("You won")
-    elif getPlayerValue() == dealer_value:
+
+    elif player_value == dealer_value:
+        chips = chips + bet
         print("Draw")
-    elif getPlayerValue() > dealer_value:
-        chips = chips + bet
+
+    elif player_value > dealer_value:
+        chips = chips + bet*2
         print("You won")
+
     else:
         chips = chips - bet
         print("You lost")
