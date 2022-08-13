@@ -41,17 +41,44 @@ def giveDealerCard():
     deck.remove(deck[random_card])
     deck_value.remove(deck_value[random_card])
 
+def getPlayerValue():
+    global player_value
+    player_value = 0
+    for i in playerChards:
+        if i[-1] == "A":
+            player_value += 11
+        else:
+            player_value += int(i[-1])
+    for i in playerChards:
+        if i[-1] == "A" and player_value > 21:
+            player_value -= 10
+    return player_value
+
+def getDealerValue():
+    global dealer_value
+    dealer_value = 0
+    for i in dealerChards:
+        if i[-1] == "A":
+            dealer_value += 11
+        else:
+            dealer_value += int(i[-1])
+    for i in dealerChards:
+        if i[-1] == "A" and dealer_value > 21:
+            dealer_value -= 10
+    return dealer_value
+
+
 def checkWinner():
     global chips
-    if player_value > 21:
+    if getPlayerValue() > 21:
         chips = chips - bet
         print("You lost")
-    elif dealer_value > 21:
+    elif getDealerValue() > 21:
         chips = chips + bet
         print("You won")
-    elif player_value == dealer_value:
+    elif getPlayerValue() == dealer_value:
         print("Draw")
-    elif player_value > dealer_value:
+    elif getPlayerValue() > dealer_value:
         chips = chips + bet
         print("You won")
     else:
