@@ -18,12 +18,12 @@ bet = 0
 
 # GUI
 
-window = Tk()
-Icon = PhotoImage(file="Icon.png")
-window.geometry("800x600")
-window.resizable(False, False)
-window.iconphoto(True,Icon)
-window.title("Blackjack")
+#window = Tk()
+#Icon = PhotoImage(file="Icon.png")
+#window.geometry("800x600")
+#window.resizable(False, False)
+#window.iconphoto(True,Icon)
+#window.title("Blackjack")
 
 # FUNCTIONS
 
@@ -98,7 +98,7 @@ def checkWinner():
 
     elif player_value == 21 and num_of_cards == 2:
         chips = chips + bet*3
-        print("You won")
+        print("Blackjack")
 
     elif player_value == dealer_value:
         chips = chips + bet
@@ -112,9 +112,8 @@ def checkWinner():
         chips = chips - bet
         print("You lost")
 
-
 cls()
 
 
 
-window.mainloop()
+#window.mainloop()
