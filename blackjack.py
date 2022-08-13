@@ -51,6 +51,8 @@ def getPlayerValue():
             player_value += 10
         elif i[-1] == "K":
             player_value += 10
+        elif i[-1] == "0":
+            player_value += 10
         else:
             player_value += int(i[-1])
 
@@ -70,6 +72,8 @@ def getDealerValue():
         elif i[-1] == "Q":
             dealer_value += 10
         elif i[-1] == "K":
+            dealer_value += 10
+        elif i[-1] == "0":
             dealer_value += 10
         else:
             dealer_value += int(i[-1])
