@@ -28,7 +28,6 @@ window.title("Blackjack")
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
 
-
 def givePlayerCard():
     random_card = random.randint(0,len(deck)-1)
     playerChards.append(deck[random_card])
@@ -42,20 +41,28 @@ def giveDealerCard():
     deck_value.remove(deck_value[random_card])
 
 def getPlayerValue():
-    global player_value
+
     player_value = 0
     for i in playerChards:
         if i[-1] == "A":
             player_value += 11
+        elif i[-1] == "J":
+            player_value += 10
+        elif i[-1] == "Q":
+            player_value += 10
+        elif i[-1] == "K":
+            player_value += 10
         else:
             player_value += int(i[-1])
+
     for i in playerChards:
         if i[-1] == "A" and player_value > 21:
             player_value -= 10
+    
     return player_value
 
 def getDealerValue():
-    global dealer_value
+
     dealer_value = 0
     for i in dealerChards:
         if i[-1] == "A":
