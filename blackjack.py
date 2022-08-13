@@ -40,7 +40,7 @@ def giveDealerCard():
     dealerCards.append(deck[random_card])
     deck.remove(deck[random_card])
 
-def getPlayerValue():
+def updatePlayerValue():
     global player_value
 
     player_value = 0
@@ -62,7 +62,7 @@ def getPlayerValue():
         if i[-1] == "A" and player_value > 21:
             player_value -= 10
 
-def getDealerValue():
+def updateDealerValue():
     global dealer_value
 
     dealer_value = 0
@@ -89,20 +89,17 @@ def checkWinner():
     global dealer_value
     global player_value
 
-    num_of_cards = 0
-    for i in playerCards:
-        num_of_cards += 1
 
-    if player_value > 21:
-        print("You lost")
-
-    elif player_value == 21 and num_of_cards == 2:
-        chips = chips + bet*3
-        print("Blackjack")
-
-    elif player_value == dealer_value:
+    if player_value == dealer_value:
         chips = chips + bet
         print("Draw")
+    
+    elif player_value > 21:
+        print("You lost")
+
+    elif player_value == 21 and len(playerCards) == 2:
+        chips = chips + bet*3
+        print("Blackjack")
 
     elif player_value > dealer_value:
         chips = chips + bet*2
@@ -112,8 +109,41 @@ def checkWinner():
         chips = chips - bet
         print("You lost")
 
+def Game():
+    global bet
+    global chips #nom nom nom :D
+    global playerCards
+    global player_value
+    global dealerCards
+    global dealer_value
+
+    #bet = int(input("How much do u want to bet? >"))
+    chips -= bet
+
+    #give the player 2 chards who would have guessed?
+    for i in range(2):
+        givePlayerCard()
+    
+    for i in range(2):
+        giveDealerCard()
+   
+    
+    updatePlayerValue()
+    updateDealerValue()
+
+
+    print(playerCards)
+    if player_value == 21 and len(playerCards) == 2:
+        checkWinner()
+
+    print("Debug:" + str(player_value))
+    
+
+
+
 cls()
 
+Game()
 
 
 #window.mainloop()
