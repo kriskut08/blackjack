@@ -14,6 +14,7 @@ playerCards = []
 dealerCards = []
 player_value = 0
 dealer_value = 0
+bet = 0
 
 # GUI
 
@@ -113,7 +114,6 @@ def checkWinner():
 
 
 cls()
-
 
 
 
