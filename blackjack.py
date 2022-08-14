@@ -3,7 +3,7 @@ import time
 import os
 from tkinter import *
 
-# DEFAULT VALUES
+# DEFAULT VALUES UWU
 
 chips = 1000
 deck = ["club_2","club_3","club_4","club_5","club_6","club_7","club_8","club_9","club_10","club_J","club_Q","club_K","club_A",
@@ -17,7 +17,7 @@ player_value = 0
 dealer_value = 0
 bet = 0
 
-# GUI
+# GUI UWU
 
 #window = Tk()
 #Icon = PhotoImage(file="Icon.png")
@@ -26,7 +26,7 @@ bet = 0
 #window.iconphoto(True,Icon)
 #window.title("Blackjack")
 
-# FUNCTIONS
+# FUNCTIONS UWU
 
 def cls():
     os.system('cls' if os.name=='nt' else 'clear')
@@ -114,7 +114,7 @@ def checkWinner():
 
 def Game():
     global bet
-    global chips #nom nom nom :D
+    global chips #nom nom nom :D UWU
     global playerCards
     global player_value
     global dealerCards
@@ -138,18 +138,18 @@ def Game():
     print("Bet: " + str(bet))
     print("Chips: " + str(chips))
 
-    #give the player 2 cards, who would have guessed?
+    #give the player 2 cards, who would have guessed? UWU
     for i in range(2):
         givePlayerCard()
     
-    #give the dealer 2 cards, who would have guessed?
+    #give the dealer 2 cards, who would have guessed? UWU
     for i in range(2):
         giveDealerCard()
 
     print("Player: " + str(playerCards))
     print("Dealer: " + str(dealerCards))
 
-    #detect blackjacks
+    #detect blackjacks UWU
     if player_value == 21 and len(playerCards) == 2:
         checkWinner()
         return
@@ -158,6 +158,7 @@ def Game():
         checkWinner()
         return
     
+    # main loop UWU
     while True:
         wantNewCard = input("Want a new card? (Y/N) -> ")
         if wantNewCard == "Y":
@@ -177,7 +178,6 @@ def Game():
             else:
                 checkWinner()
                 Game()
-
 
 
 cls()
