@@ -81,6 +81,7 @@ def updateDealerValue():
             dealer_value += 10
         else:
             dealer_value += int(i[-1])
+
     for i in dealerCards:
         if i[-1] == "A" and dealer_value > 21:
             dealer_value -= 10
@@ -118,8 +119,17 @@ def Game():
     global dealerCards
     global dealer_value
 
-    bet = int(input("How much do u want to bet? -> "))
+    if chips > 0:
+        bet = int(input("How much do u want to bet? -> "))
+    else:
+        print("U RAN OUT OF CHIPS LOL")
+        quit()
     chips -= bet
+
+    cls()
+
+    print("Bet: " + str(bet))
+    print("Chips: " + str(chips))
 
     #give the player 2 cards, who would have guessed?
     for i in range(2):
@@ -140,11 +150,12 @@ def Game():
     elif dealer_value == 21 and len(dealerCards) == 2:
         checkWinner()
         return
+    
+    while True:
+        Game()
 
 cls()
 
-
 Game()
-
 
 #window.mainloop()
