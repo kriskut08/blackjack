@@ -129,12 +129,6 @@ def Game():
     for i in range(2):
         giveDealerCard()
 
-    playerCards = ["A","9"]
-    dealerCards = ["A","K"]
-
-    updatePlayerValue()
-    updateDealerValue()
-
     print("Player: " + str(playerCards))
     print("Dealer: " + str(dealerCards))
 
