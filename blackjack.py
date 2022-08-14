@@ -118,7 +118,7 @@ def Game():
     global dealerCards
     global dealer_value
 
-    #bet = int(input("How much do u want to bet? >"))
+    bet = int(input("How much do u want to bet? -> "))
     chips -= bet
 
     #give the player 2 cards, who would have guessed?
