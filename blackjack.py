@@ -1,7 +1,7 @@
 import random
 import time
 import os
-from tkinter import *
+from tkinter import * ;from tkinter.ttk import *
 
 # DEFAULT VALUES
 
@@ -19,12 +19,35 @@ bet = 0
 
 # GUI
 
-#window = Tk()
-#Icon = PhotoImage(file="Icon.png")
-#window.geometry("800x600")
-#window.resizable(False, False)
-#window.iconphoto(True,Icon)
-#window.title("Blackjack")
+window = Tk()
+Icon = PhotoImage(file="Icon.png")
+window.geometry("800x600")
+window.resizable(False, False)
+window.iconphoto(True,Icon)
+window.title("Blackjack")
+# make the background green
+window.configure(background='green')
+
+dlr = Label(window, text = "Dealer:", font = "Arial 20")
+pyr = Label(window, text = "Player:", font = "Arial 20")
+
+dlr.place(x = 0, y = 0)
+pyr.place(x=0, y=300)
+
+dlrx = 100
+dlry = 0
+
+for i in range(len(deck)):
+    img= PhotoImage(file="Cards/{}.png".format(deck[i].split("_")[0]+"s/"+deck[i]))
+    Label(window, image=img).place(x=dlrx, y=dlry)
+    dlrx += 50
+    if i % 13 == 12:
+        dlrx = 100
+        dlry += 50
+
+window.update_idletasks()
+window.update()
+
 
 # FUNCTIONS
 
@@ -147,7 +170,7 @@ def Game():
         giveDealerCard()
 
     print("Player: " + str(playerCards))
-    print("Dealer: " + str(dealerCards))
+    print("Dealer: " + str(dealerCards[:1]))
 
     #detect blackjacks
     if player_value == 21 and len(playerCards) == 2:
@@ -182,6 +205,6 @@ def Game():
 
 cls()
 
-Game()
+#Game()
 
-#window.mainloop()
+window.mainloop()
