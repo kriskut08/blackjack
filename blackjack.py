@@ -34,11 +34,13 @@ def givePlayerCard():
     random_card = random.randint(0,len(deck)-1)
     playerCards.append(deck[random_card])
     deck.remove(deck[random_card])
+    updatePlayerValue()
 
 def giveDealerCard():
     random_card = random.randint(0,len(deck)-1)
     dealerCards.append(deck[random_card])
     deck.remove(deck[random_card])
+    updateDealerValue()
 
 def updatePlayerValue():
     global player_value
@@ -95,7 +97,7 @@ def checkWinner():
         print("Draw")
     
     elif player_value > 21:
-        print("You lost")
+        print("You busted")
 
     elif player_value == 21 and len(playerCards) == 2:
         chips = chips + bet*3
@@ -106,7 +108,6 @@ def checkWinner():
         print("You won")
 
     else:
-        chips = chips - bet
         print("You lost")
 
 def Game():
@@ -120,23 +121,23 @@ def Game():
     #bet = int(input("How much do u want to bet? >"))
     chips -= bet
 
-    #give the player 2 chards who would have guessed?
+    #give the player 2 cards, who would have guessed?
     for i in range(2):
         givePlayerCard()
     
+    #give the dealer 2 cards, who would have guessed?
     for i in range(2):
         giveDealerCard()
-   
-    
-    updatePlayerValue()
-    updateDealerValue()
 
+    print("Player: " + str(playerCards))
+    print("Dealer: " + str(dealerCards))
 
-    print(playerCards)
+    #detect blackjack
     if player_value == 21 and len(playerCards) == 2:
         checkWinner()
-
-    print("Debug:" + str(player_value))
+    
+    elif dealer_value == 21 and len(dealerCards) == 2:
+        checkWinner()
     
 
 
