@@ -121,8 +121,6 @@ def Game():
     bet = int(input("How much do u want to bet? -> "))
     chips -= bet
 
-    print(chips)
-
     #give the player 2 cards, who would have guessed?
     for i in range(2):
         givePlayerCard()
@@ -148,8 +146,6 @@ def Game():
     elif dealer_value == 21 and len(dealerCards) == 2:
         checkWinner()
         return
-
-    print(chips)
 
 cls()
 
