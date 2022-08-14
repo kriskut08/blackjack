@@ -132,17 +132,15 @@ def Game():
     print("Player: " + str(playerCards))
     print("Dealer: " + str(dealerCards))
 
-    #detect blackjack
+    #detect blackjacks
     if player_value == 21 and len(playerCards) == 2:
         checkWinner()
-    
+        
     elif dealer_value == 21 and len(dealerCards) == 2:
         checkWinner()
-    
-
-
 
 cls()
+
 
 Game()
 
